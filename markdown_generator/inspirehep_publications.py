@@ -28,13 +28,13 @@ API_BASE = "https://inspirehep.net/api"
 USER_AGENT = "toicca.github.io-publication-generator/1.0"
 
 CATEGORY_BY_DOC_TYPE = {
-    "article": "manuscripts",
-    "conference paper": "conferences",
-    "proceedings": "conferences",
-    "book": "books",
-    "book chapter": "books",
-    "thesis": "manuscripts",
-    "report": "manuscripts",
+    "article": "inspire-manuscripts",
+    "conference paper": "inspire-conferences",
+    "proceedings": "inspire-conferences",
+    "book": "inspire-books",
+    "book chapter": "inspire-books",
+    "thesis": "inspire-manuscripts",
+    "report": "inspire-manuscripts",
 }
 
 RECORD_FIELDS = (
@@ -149,7 +149,7 @@ def record_to_markdown(record, author_name):
     title = pick_title(md.get("titles") or [])
     collabs = [c["value"] for c in (md.get("collaborations") or []) if c.get("value")]
     doc_types = md.get("document_type") or ["article"]
-    category = CATEGORY_BY_DOC_TYPE.get(doc_types[0], "manuscripts")
+    category = CATEGORY_BY_DOC_TYPE.get(doc_types[0], "inspire-manuscripts")
     date = md.get("earliest_date", "")
     year = date[:4] if date else ""
     pub_info = md.get("publication_info")

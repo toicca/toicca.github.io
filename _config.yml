@@ -83,11 +83,20 @@ author:
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
+# The "inspire-*" categories are populated automatically by
+# markdown_generator/inspirehep_publications.py and kept separate from
+# manually-added entries in the categories below.
 publication_category:
+  inspire-manuscripts:
+    title: 'Journal Articles (INSPIRE-HEP)'
+  inspire-conferences:
+    title: 'Conference Papers (INSPIRE-HEP)'
+  inspire-books:
+    title: 'Books (INSPIRE-HEP)'
   books:
     title: 'Books'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal Articles'
   conferences:
     title: 'Conference Papers'
 
