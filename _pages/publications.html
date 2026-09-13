@@ -11,20 +11,64 @@ author_profile: true
 
 {% include base_path %}
 
+<style>
+  .publications-collapsible > summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+  }
+  .publications-collapsible > summary::-webkit-details-marker {
+    display: none;
+  }
+  .publications-collapsible > summary::before {
+    content: "▶";
+    display: inline-block;
+    font-size: 0.6em;
+    transition: transform 0.15s ease;
+  }
+  .publications-collapsible[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  .publications-collapsible > summary h2 {
+    display: inline;
+    margin: 0;
+  }
+</style>
+
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
+  {% for category in site.publication_category %}
+    {% assign cat_key = category[0] %}
+    {% assign cat_prefix = cat_key | slice: 0, 8 %}
+    {% assign is_inspire = false %}
+    {% if cat_prefix == "inspire-" %}
+      {% assign is_inspire = true %}
+    {% endif %}
+
+    {% capture posts_html %}
+      {% for post in site.publications reversed %}
+        {% if post.category != cat_key %}
+          {% continue %}
+        {% endif %}
+        {% include archive-single.html %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign posts_html_stripped = posts_html | strip %}
+
+    {% unless posts_html_stripped == "" %}
+      {% if is_inspire %}
+        <details class="publications-collapsible">
+          <summary><h2>{{ category[1].title }}</h2></summary>
+          <hr />
+          {{ posts_html }}
+        </details>
+      {% else %}
         <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
+        {{ posts_html }}
+      {% endif %}
+    {% endunless %}
   {% endfor %}
 {% else %}
   {% for post in site.publications reversed %}

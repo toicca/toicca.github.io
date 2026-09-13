@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "contrast" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Nico Toikka / Nico's personal site"
+title                    : "Nico Toikka"
 title_separator          : "-"
 name                     : &name "Nico Toikka"
 description              : &description "Nico Toikka's personal site"   # Update this with a general description of your site, this is the default if not overridden by a page
@@ -87,18 +87,22 @@ author:
 # markdown_generator/inspirehep_publications.py and kept separate from
 # manually-added entries in the categories below.
 publication_category:
-  inspire-manuscripts:
-    title: 'Journal Articles (INSPIRE-HEP)'
-  inspire-conferences:
-    title: 'Conference Papers (INSPIRE-HEP)'
-  inspire-books:
-    title: 'Books (INSPIRE-HEP)'
   books:
     title: 'Books'
   manuscripts:
     title: 'Journal Articles'
   conferences:
     title: 'Conference Papers'
+  proceedings:
+    title: 'Proceedings'
+  detector-performance-notes:
+    title: 'Detector Performance Notes'
+  inspire-manuscripts:
+    title: 'Journal Articles (INSPIRE-HEP)'
+  inspire-proceedings:
+    title: 'Proceedings (INSPIRE-HEP)'
+  inspire-books:
+    title: 'Books (INSPIRE-HEP)'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews

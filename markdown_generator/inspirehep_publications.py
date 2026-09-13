@@ -3,7 +3,7 @@
 INSPIRE-HEP publications markdown generator for AcademicPages.
 
 Fetches the publication list for an INSPIRE-HEP author and writes one
-markdown file per record into _publications/, formatted for the
+markdown file per record into _publications/inspire/, formatted for the
 academicpages `publications` collection (same frontmatter shape as
 publications.py, but sourced live from the INSPIRE-HEP API instead of
 a manually maintained CSV/TSV).
@@ -29,12 +29,12 @@ USER_AGENT = "toicca.github.io-publication-generator/1.0"
 
 CATEGORY_BY_DOC_TYPE = {
     "article": "inspire-manuscripts",
-    "conference paper": "inspire-conferences",
-    "proceedings": "inspire-conferences",
+    "conference paper": "inspire-proceedings",
+    "proceedings": "inspire-proceedings",
+    "report": "inspire-proceedings",
     "book": "inspire-books",
     "book chapter": "inspire-books",
     "thesis": "inspire-manuscripts",
-    "report": "inspire-manuscripts",
 }
 
 RECORD_FIELDS = (
@@ -190,7 +190,7 @@ def record_to_markdown(record, author_name):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--author-id", help="INSPIRE-HEP numeric author id (default: from _config.yml)")
-    parser.add_argument("--out-dir", default=None, help="Output directory (default: ../_publications)")
+    parser.add_argument("--out-dir", default=None, help="Output directory (default: ../_publications/inspire)")
     parser.add_argument("--max", type=int, default=None, help="Max number of records to fetch")
     parser.add_argument("--dry-run", action="store_true", help="Print what would be written, don't write files")
     args = parser.parse_args()
@@ -198,7 +198,7 @@ def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(script_dir)
     config_path = os.path.join(repo_root, "_config.yml")
-    out_dir = args.out_dir or os.path.join(repo_root, "_publications")
+    out_dir = args.out_dir or os.path.join(repo_root, "_publications", "inspire")
 
     author_id = args.author_id or find_author_id_from_config(config_path)
     print(f"Looking up INSPIRE author id {author_id}...")
