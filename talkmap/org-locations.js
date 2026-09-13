@@ -1,22 +1,37 @@
 var addressPoints = [
   [
-    "Talk 1 on Relevant Topic in Your Field<br />UC San Francisco, Department of Testing; San Francisco, CA, USA",
-    37.7879363,
-    -122.4075201
+    "Vector boson + jet production in CMS and ATLAS<br />Diffraction and Low-x 2026; Hotel Akti Taygetos, Messinia, Greece",
+    37.0389,
+    22.1142
   ],
   [
-    "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
-    51.5074456,
-    -0.1277653
+    "Energy energy correlator measurements at the LHC<br />Diffraction and Low-x 2026; Hotel Akti Taygetos, Messinia, Greece",
+    37.0389,
+    22.1142
   ],
   [
-    "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
-    37.8708393,
-    -122.272863
+    "Jet and jet substructure results<br />Low-x 2025; Medulin, Croatia",
+    44.8055,
+    13.9203
   ],
   [
-    "Conference Proceeding talk 3 on Relevant Topic in Your Field<br />Testing Institute of America 2014 Annual Conference; Los Angeles, CA, USA",
-    34.0536909,
-    -118.242766
+    "Kotkan lyseon työelämäpäivä<br />Kotkan lyseo; Kotka, Finland",
+    60.4664,
+    26.9458
+  ],
+  [
+    "From bits to publications<br />CERN; Geneva, Switzerland",
+    46.2044,
+    6.1432
+  ],
+  [
+    "Lähes kaiken teoria<br />CERN; Geneva, Switzerland",
+    46.2044,
+    6.1432
+  ],
+  [
+    "Fysiikan opiskelu (HIP/CERN MasterClass)<br />Helsingin yliopisto; Helsinki, Finland",
+    60.1699,
+    24.9384
   ]
 ];
