@@ -167,7 +167,9 @@ def record_to_markdown(record, author_name):
 
     lines = [
         "---",
-        f'title: "{html_escape(title)}"',
+        # single-quoted: titles often contain LaTeX backslashes (\to, \sqrt, ...)
+        # which are invalid escape sequences inside a double-quoted YAML scalar
+        f"title: '{html_escape(title)}'",
         "collection: publications",
         f"category: {category}",
         f"permalink: /publication/inspire-{control_number}",
@@ -218,6 +220,7 @@ def main():
             continue
         with open(path, "w") as f:
             f.write(content)
+        os.chmod(path, 0o644)  # host umask may default to 600, unreadable by the Docker container's uid
         written += 1
 
     if not args.dry_run:
