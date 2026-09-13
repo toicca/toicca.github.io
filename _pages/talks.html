@@ -11,6 +11,12 @@ author_profile: true
 
 {% endif %}
 
-{% for post in site.talks reversed %}
+{% assign talks_dated = site.talks | where_exp: "item", "item.date" | sort: "date" | reverse %}
+{% assign talks_undated = site.talks | where_exp: "item", "item.date == nil" %}
+
+{% for post in talks_dated %}
+  {% include archive-single-talk.html %}
+{% endfor %}
+{% for post in talks_undated %}
   {% include archive-single-talk.html %}
 {% endfor %}

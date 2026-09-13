@@ -4,6 +4,6 @@ services:
     build: .
     volumes: [ .:/usr/src/app, /usr/src/app/.git ]
     ports: [ 4000:4000 ]
-    user: 1000:1000
+    user: root  # avoids permission-denied crashes from host files with restrictive modes (umask); _site/ and .sass-cache/ are gitignored build output so root ownership there is harmless
     environment: [ JEKYLL_ENV=docker ]
     command: jekyll serve -H 0.0.0.0 -w --config _config.yml,_config_docker.yml

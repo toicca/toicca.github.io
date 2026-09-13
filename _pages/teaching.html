@@ -7,6 +7,26 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign title_shown = false %}
 {% for post in site.teaching reversed %}
+  {% if post.type == "Thesis supervision" %}
+    {% continue %}
+  {% endif %}
+  {% unless title_shown %}
+    <h2>Courses</h2><hr />
+    {% assign title_shown = true %}
+  {% endunless %}
+  {% include archive-single.html %}
+{% endfor %}
+
+{% assign title_shown = false %}
+{% for post in site.teaching reversed %}
+  {% if post.type != "Thesis supervision" %}
+    {% continue %}
+  {% endif %}
+  {% unless title_shown %}
+    <h2>Supervision</h2><hr />
+    {% assign title_shown = true %}
+  {% endunless %}
   {% include archive-single.html %}
 {% endfor %}
